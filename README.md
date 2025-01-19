@@ -36,7 +36,7 @@ L'application contient **4 pages principales** :
    - cd TP_SuperHeros
 3. **Lancez le projet via un serveur local :**
    - Placez le dossier dans le répertoire htdocs de XAMPP Server.
-Ouvrez super.html dans votre navigateur.
+4. **Ouvrez super.html dans votre navigateur.**
 
 
 ## **Outils Utilisés**
