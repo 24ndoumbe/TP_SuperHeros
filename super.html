@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superhero App</title>
+  <!-- Vue.js et Axios CDN -->
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="https://unpkg.com/axios@latest"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <!--<div id="navbar-placeholder"></div>-->
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="super.html">Super Héros</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+        
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="super.html">Listes des Super Heros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="détail.html">Détail d'un Super Heros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="superMatch.html">SuperPower Matcher</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="auteur.html">Auteur</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+  </header>
+
+  <div id="app" class="container my-5">
+    <h1 class="text-center my-4">Liste des Superhéros</h1>
+
+    <!-- Barre de recherche -->
+    <div class="mb-4">
+      <input
+        type="text"
+        v-model="searchQuery"
+        class="form-control"
+        placeholder="Rechercher un superhéros..."
+      />
+      <button @click="resetSearch" class="btn btn-secondary w-100">Réinitialiser la recherche</button>
+    </div>
+
+    <!-- Liste des superhéros -->
+    <ul class="list-group">
+      <li
+        v-for="hero in filteredSuperheros"
+        :key="hero.id"
+        class="list-group-item list-group-item-action d-flex align-items-center justify-content-between"
+        @click="goToDetail(hero.id)"
+      >
+        <img
+          :src="hero.images.md"
+          alt="Superhero Image"
+          class="rounded-circle me-3"
+          width="50"
+        />
+        <h5 class="mb-0">{{ hero.name }}</h5>
+        <small> {{ hero.id }}</small>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // Charger la barre de navigation
+    // Inclure la barre de navigation
+    fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('navbar-placeholder').innerHTML = data;
+    })
+
+
+    const app = Vue.createApp({
+      data() {
+        return {
+          superheros: [],
+          searchQuery: '',
+        };
+      },
+      computed: {
+        // Filtrer les superhéros en fonction de la recherche
+        filteredSuperheros() {
+          return this.superheros.filter(hero =>
+            hero.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+          );
+        },
+      },
+      methods: {
+        // Naviguer vers la page de détail
+        goToDetail(id) {
+          window.location.href = `détail.html?id=${id}`;
+        },
+      },
+      mounted() {
+        // Récupérer les données des superhéros
+        axios
+          .get(
+            'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json'
+          )
+          .then(response => {
+            this.superheros = response.data;
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      },
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
