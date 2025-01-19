@@ -45,5 +45,8 @@ L'application contient **4 pages principales** :
 - **Bootstrap :** Framework CSS pour une mise en page responsive.  
 - **SuperHero API :** Source des données des super-héros.
 
-
+## Auteur
+Nom : DIEYE  
+Prénom : NDOUMBE  
+Université : UPHF Valenciennes
 
