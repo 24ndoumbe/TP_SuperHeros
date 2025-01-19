@@ -3,7 +3,6 @@
 ## **Description**
 Une application web interactive permettant d'explorer et rechercher des super-héros à partir de leurs caractéristiques et superpouvoirs. L'objectif est d'offrir une interface intuitive pour afficher leurs biographies, leurs détails, et trouver des héros en fonction de critères spécifiques.  
 
----
 
 ## **Fonctionnalités**
 - **🔍 Liste des super-héros :**  
@@ -15,7 +14,6 @@ Une application web interactive permettant d'explorer et rechercher des super-h�
 - **🖋️ Biographies :**  
   Lisez les biographies complètes des super-héros pour en savoir plus sur eux.  
 
----
 
 ## **Structure des Pages**
 L'application contient **4 pages principales** :
@@ -24,22 +22,20 @@ L'application contient **4 pages principales** :
 3. **SuperPower Matcher :** Permet de rechercher des héros correspondant à vos critères via un formulaire interactif.  
 4. **Auteur (Biographies) :** Affiche les biographies et les images des héros.
 
----
 
 ## **Prérequis**
 - Un serveur local (par exemple : **XAMPP**, **WAMP**).  
 - Un navigateur moderne (*Chrome, Firefox, Edge, etc.*).  
 - Connexion Internet pour charger les données depuis l'API SuperHero.  
 
----
 
 ## **Installation**
 1. **Clonez le dépôt GitHub :**  
    git clone https://github.com/24ndoumbe/TP_SuperHeros.git
-2.Accédez au dossier du projet :
-    cd TP_SuperHeros
-3.Lancez le projet via un serveur local :
-  Placez le dossier dans le répertoire htdocs de XAMPP Server.
+2. **Accédez au dossier du projet :**
+   - cd TP_SuperHeros
+3. **Lancez le projet via un serveur local :**
+   - Placez le dossier dans le répertoire htdocs de XAMPP Server.
 Ouvrez super.html dans votre navigateur.
 
 
