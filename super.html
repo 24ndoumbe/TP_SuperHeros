@@ -29,7 +29,7 @@
                 <a class="nav-link active" aria-current="page" href="super.html">Listes des Super Heros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="détail.html">Détail d'un Super Heros</a>
+                <a class="nav-link active" aria-current="page" href="détail.html?id">Détail d'un Super Heros</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="superMatch.html">SuperPower Matcher</a>
@@ -76,53 +76,6 @@
     </ul>
   </div>
 
-  <script>
-    // Charger la barre de navigation
-    // Inclure la barre de navigation
-    fetch('navbar.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('navbar-placeholder').innerHTML = data;
-    })
-
-
-    const app = Vue.createApp({
-      data() {
-        return {
-          superheros: [],
-          searchQuery: '',
-        };
-      },
-      computed: {
-        // Filtrer les superhéros en fonction de la recherche
-        filteredSuperheros() {
-          return this.superheros.filter(hero =>
-            hero.name.toLowerCase().includes(this.searchQuery.toLowerCase())
-          );
-        },
-      },
-      methods: {
-        // Naviguer vers la page de détail
-        goToDetail(id) {
-          window.location.href = `détail.html?id=${id}`;
-        },
-      },
-      mounted() {
-        // Récupérer les données des superhéros
-        axios
-          .get(
-            'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json'
-          )
-          .then(response => {
-            this.superheros = response.data;
-          })
-          .catch(error => {
-            console.error(error);
-          });
-      },
-    });
-
-    app.mount('#app');
-  </script>
+  <script src="super.js"></script>
 </body>
 </html>

@@ -7,6 +7,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Barre de navigation -->
@@ -83,7 +84,7 @@
       <button type="submit" class="btn btn-primary w-100">Trouver des Super-héros</button>
     </form>
 
-    <!-- Liste des super-héros correspondants sous forme de texte -->
+    <!-- Liste des super-héros -->
     <div v-if="matchingHeroes.length" class="list-group">
       <div class="list-group-item" v-for="hero in matchingHeroes" :key="hero.id">
         {{ hero.name }}
@@ -94,43 +95,6 @@
     <p v-else class="text-center">Chargement des données...</p>
   </div>
 
-  <script>
-    Vue.createApp({
-      data() {
-        return {
-          superheros: [],              
-          powerLevels: {               
-            intelligence: 50,
-            strength: 50,
-            power: 50,
-          },
-          matchingHeroes: [],          
-          heroesLoaded: false,         
-        };
-      },
-      methods: {
-        findHeroes() {
-          // Filtrer les super-héros selon les niveaux minimums définis
-          this.matchingHeroes = this.superheros.filter(hero => {
-            return (
-              hero.powerstats.intelligence >= this.powerLevels.intelligence &&
-              hero.powerstats.strength >= this.powerLevels.strength &&
-              hero.powerstats.power >= this.powerLevels.power
-            );
-          });
-        },
-      },
-      mounted() {
-        // Charger les données des super-héros depuis l'API
-        axios
-          .get('https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/all.json')
-          .then(response => {
-            this.superheros = response.data;
-            this.heroesLoaded = true;
-          })
-          .catch(error => console.error('Erreur API :', error));
-      },
-    }).mount('#app');
-  </script>
+  <script src="superMatch.js"></script>
 </body>
 </html>
